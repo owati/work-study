@@ -1,0 +1,43 @@
+{% extends 'base.html' %}
+{% block content %}
+    <table class="table table-striped table-bordered table-sm">  
+        <thead class="thead-dark">  
+        <tr>  
+            <th>Student Surname</th> 
+            <th>Student Middlename</th> 
+            <th>Student Firstname</th> 
+            <th>Student Matric no</th>
+            <th>Student Faculty</th> 
+            <th>Student Department</th>     
+            <th>Student Email</th>  
+            <th>Student Contact</th>   
+            <th>Student Level</th>  
+            <th>Student Gender</th>    
+            <th>Actions</th>  
+        </tr>  
+        </thead>  
+        <tbody>  
+    {% for student in students %}  
+        <tr>
+            <td>{{ student.sur_name }}</td>    
+            <td>{{ student.mid_name }}</td>    
+            <td>{{ student.first_name }}</td>    
+            <td>{{ student.matric_no }}</td>
+            <td>{{ student.faculty }}</td>    
+            <td>{{ student.department }}</td>   
+            <td>{{ student.email }}</td>  
+            <td>{{ student.phone }}</td> 
+            <td>{{ student.level }}</td>   
+            <td>{{ student.gender }}</td>
+            <td>  
+                <a href="/edit/{{ student.id }}"><span class="glyphicon glyphicon-pencil" >Edit</span></a>  
+                <a href="/delete/{{ student.id }}">Delete</a>  
+             </td>  
+        </tr>  
+    {% endfor %}  
+        </tbody>  
+    </table>  
+    <br>
+    <br>
+<center><a href="{% url 'home' %}" class="btn btn-primary">Add New Record</a></center>  
+{% endblock %}

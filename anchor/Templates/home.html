@@ -1,0 +1,167 @@
+{% extends 'base.html' %}
+{% block content %}
+<section>
+    <form method="POST" class="container" action="">
+            {% csrf_token %}
+        <div class="row g-3 align-items-center">
+            <div class="col-4 mb-3">
+                {{ form.sur_name }}
+            </div>
+            <div class="col-4 mb-3">
+                {{ form.mid_name }}
+            </div>
+            <div class="col-4 mb-3">
+                {{ form.first_name }}
+            </div>
+            <div class="col-4 mb-3">
+                {{ form.matric_no }}
+            </div>
+            <div class="col-4 mb-3">
+                {{ form.phone }}
+            </div>
+            <div class="col-4 mb-3">
+                {{ form.email }}
+            </div>
+            <div class="col-4 mb-3">
+                {{ form.level }}
+            </div>
+            <div class="col-4 mb-3">
+                <!-- <input type="date"> -->
+                {{ form.dob }}
+            </div>
+            <div class="col-4 mb-3">
+                {{ form.gender }}
+            </div> 
+            <div class="col-6 mb-3">
+                {{ form.faculty }}
+            </div>
+            <div class="col-6 mb-3">
+                {{ form.department }}
+            </div> 
+            <div class="col-12 mb-3">
+                <h4 class="text-center">CGPA as at Last Semester/Session
+                </h4>
+            </div>
+            <div class="col-4 mb-3">
+                {{ form.session }}
+            </div>
+            <div class="col-4 mb-3">
+                {{ form.semester }}
+            </div>
+            <div class="col-4 mb-3">
+                {{ form.cgpa }}
+            </div>
+            <div class="col-12 mb-3">
+                <h4 class="text-center">Why do you want to engage in the Work study Programme of Anchor University 
+                </h4>
+            </div>
+            <div class="col-4 mb-3">
+                {{ form.reason1 }}
+            </div>
+            <div class="col-4 mb-3">
+                {{ form.reason2 }}
+            </div>
+            <div class="col-4 mb-3">
+                {{ form.reason3 }}
+            </div>
+            <div class="col-12 mb-3">
+                <h4 class="text-center text-white bg-info p-3">Guardian and Work Details</h4>
+            </div>
+            <div class="row g-3 align-items-center">
+                <div class="col-4 mb-3">
+                    {{ form.psur_name }}
+                </div>
+                <div class="col-4 mb-3">
+                    {{ form.pmid_name }}
+                </div>
+                <div class="col-4 mb-3">
+                    {{ form.pfirst_name }}
+                </div>
+                <div class="col-4 mb-3">
+                    {{ form.occupation }}
+                </div>
+                <div class="col-4 mb-3">
+                    {{ form.pphone }}
+                </div>
+                <div class="col-4 mb-3">
+                    {{ form.pemail }}
+                </div>
+            </div>
+            <div class="col-4 mb-5">
+                <h6 class="">Will your parents approve of your participation in WSP?
+                </h6>
+            </div>
+            <div class="col-8 mb-5">
+                <div class="form-check">
+                   <div class="form-check form-check-inline">
+                        {{ form.parent_approval }}
+                    </div>
+                </div>
+            </div>
+            <div class="col-4 mb-3">
+                <h6 class="">Have you had any previous work experience before now?
+                </h6>
+            </div>
+            <div class="col-8 mb-3">
+                <div class="form-check">
+                   <div class="form-check form-check-inline">
+                        {{ form.experience}}
+                    </div>
+                </div>
+                    {{ form.expdet }}
+            </div>
+            <div class="col-4 mb-3">
+                <h6 class="">In which area(s) of activity of the University do you want to be engaged 
+                </h6>
+            </div>
+            <div class="col-8 mb-3">
+                <div class="form-check form-check-inline">
+                    {{ form.library }} 
+                    <label class="form-check-label" for="Library">Library</label>
+                </div>
+                <div class="form-check form-check-inline">
+                    {{ form.cafetaria }} 
+                    <label class="form-check-label" for="cafeteria">Cafeteria</label>
+                </div>
+                <div class="form-check form-check-inline">
+                    {{ form.supermarket }}
+                    <label class="form-check-label" for="supermarket">Supermarket</label>
+                </div>
+                <div class="form-check form-check-inline">
+                    {{ form.ict_unit }}
+                    <label class="form-check-label" for="ict">ICT Unit</label>
+                </div>
+                <div class="form-check form-check-inline">
+                    {{ form.water_works }}
+                    <label class="form-check-label" for="Water">Water Works</label>
+                </div>
+                <div class="form-check form-check-inline">
+                    {{ form.general_affairs }}
+                    <label class="form-check-label" for="general">General Affairs (Cleaning)</label>
+                </div>
+                <div class="form-check form-check-inline">
+                    <label class="form-check-label" for="other">Others</label>
+                    {{ form.others }}
+                </div>
+                {{ form.preferred }}
+            </div>
+            <div class="col-4 mb-5">
+                <h6>How many hours per week are you available to work?</h6>
+            </div>
+                <div class="col-8 mb-5">
+                    {{ form.hrs }}
+                </div>
+                <div class="col-12 mb-5">
+                    <h6>DECLARATION:</h6>
+                    <label for ='declaration' class="form_control">I </label>
+                    {{ form.declaration }} hereby declare that the information supplied above is correct and if at any time any of them is found to be untrue, I shall forfeit  the opportunity to participate in the Work Study Programme of the University.  I also declare that if I damage any equipment in my place of assignment I shall reimburse the University for the full recovery price of the item.
+                </div>
+                <div class="col-4 mb-3">
+                    <label for ='namesign' class="form_control">Applicant's full name and signature: </label>
+                    {{ form.namesign }}<br>
+                    Please upload digital signature: {{ form.sign }}
+                </div>
+        <button type="submit">Submit</button>
+    </form>
+</section>
+{% endblock  %}
