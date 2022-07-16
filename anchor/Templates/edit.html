@@ -1,273 +1,280 @@
 {% extends 'base.html' %}
 {% block content %}
-        <section>
-            <form method="POST" class="container" action="/update/{{student.id}}" enctype="multipart/form-data">  
+    <section>
+        <form method="POST" class="container" action="/update/{{student.id}}">  
                 {% csrf_token %}  
             <div class="row g-3 align-items-center">
                 <div class="col-4 mb-3">
-                    <label for ='name'><b>Surname Name: </b></label>
-                    <input type="text" class="form_control" name="sur_name" id="id_surname" required maxlength="150" value="{{ student.sur_name }}"/>  
+                    <label for ='name'><b>Surname: </b></label>
+                    <input type="text" class="container" name="sur_name" id="id_surname" required maxlength="150" value="{{ student.sur_name }}"/>  
                 </div>
                 <div class="col-4 mb-3">
                     <label for ='name'><b>Middle Name: </b></label>
-                    <input type="text" class="form_control" name="mid_name" id="id_midname" required maxlength="150" value="{{ student.mid_name }}"/>  
+                    <input type="text" class="container" name="mid_name" id="id_midname" required maxlength="150" value="{{ student.mid_name }}"/>  
                 </div>
                 <div class="col-4 mb-3">
                     <label for ='name'><b>First Name: </b></label>
-                    <input type="text" class="form_control" name="first_name" id="id_firstname" required maxlength="150" value="{{ student.first_name }}"/>  
+                    <input type="text" class="container" name="first_name" id="id_firstname" required maxlength="150" value="{{ student.first_name }}"/>  
                 </div>
                 <div class="col-4 mb-3">
                     <label for ='matric_no'><b>Matric No: </b></label>
-                    <input type="text" class="form_control" name="matric_no" id="id_matric_no" required maxlength="35" value="{{ student.matric_no }}"/>  
+                    <input type="text" class="container" name="matric_no" id="id_matric_no" required maxlength="35" value="{{ student.matric_no }}"/>  
                 </div>
                 <div class="col-4 mb-3">
                     <label for ='phone'><b>Phone Number: </b></label>
-                    <input type="text" class="form_control" name="phone" id="id_phone" required maxlength="20" value="{{ student.phone }}"/>  
+                    <input type="text" class="container" name="phone" id="id_phone" required maxlength="20" value="{{ student.phone }}"/>  
                 </div>
                 <div class="col-4 mb-3">
                     <label for ='email'><b>Email Address: </b></label>
-                    <input type="email" class="form_control" name="email" id="id_email" required maxlength="250" value="{{ student.email }}"/>
+                    <input type="email" class="container" name="email" id="id_email" required maxlength="250" value="{{ student.email }}"/>
                 </div>
-                
                 <div class="col-4 mb-3">
                     <label for ='level'><b>Level: </b></label>
-                    <input type="text" class="form_control" name="level" id="id_level" required maxlength="8" value="{{ student.level }}"/> 
+                    <input type="text" class="container" name="level" id="id_level" required maxlength="50" value="{{ student.level }}"/> 
                 </div>
                 <div class="col-4 mb-3">
-                    <label for ='faculty'><b>Faculty: </b></label>
-                    <input type="text" class="form_control" name="faculty" id="id_faculty" required maxlength="40" value="{{ student.faculty }}"/>  
-                </div>
-                <div class="col-4 mb-3">
-                    <label for ='department'><b>Department: </b></label>
-                    <input type="text" class="form_control" name="department" id="id_department" required maxlength="40" value="{{ student.department }}"/>  
+                    <label for ='dob'><b>Date of Birth: </b></label>
+                    <input type="tdate" class="container" name="dob" id="id_dob" required value="{{ student.dob }}"/>  
                 </div>
                 <div class="col-4 mb-3">
                     <label for ='gender'><b>Gender: </b></label>
-                    <input type="text" class="form_control" name="gender" id="id_gender" required maxlength="150" value="{{ student.gender }}"/>
+                    <input type="text" class="container" name="gender" id="id_gender" required maxlength="50" value="{{ student.gender }}"/>
                 </div>
-                <!--<div class="col-4 mb-3">
-                    <label for ='dob'><b>Date of birth: </b></label>
-                    <input type="text" class="form_control" name="dob" id="id_dob" required maxlength="150" value="{{ student.dob }}"/>
+                <div class="col-6 mb-3">
+                    <label for ='faculty'><b>Faculty: </b></label>
+                    <input type="text" class="container" name="faculty" id="id_faculty" required maxlength="50" value="{{ student.faculty }}"/>  
                 </div>
-                div class="col-4 mb-3">
-                    <label for ='cgpa'><b>CGPA: </b></label>
-                    <input type="text" class="form_control" name="name" id="id_name" required maxlength="150" value="{{ student.name }}"/>  {{ student.cgpa }}
+                <div class="col-6 mb-3">
+                    <label for ='department'><b>Department: </b></label>
+                    <input type="text" class="container" name="department" id="id_department" required maxlength="300" value="{{ student.department }}"/>  
+                </div>
+                <div class="col-12 mb-3">
+                    <h4 class="text-center">CGPA as at Last Semester/Session
+                    </h4>
+                </div>
+                <div class="col-4 mb-3">
+                    <label for ='session'><b>Session: </b></label>
+                    <input type="text" class="container" name="session" id="id_session" required maxlength="50" value="{{ student.session }}"/>  
+                </div>
+                <div class="col-4 mb-3">
                     <label for ='semester'><b>as at (semester): </b></label>
-                    {{ student.semester }}
-                    <label for ='session'><b>and Session: </b></label>
-                    {{ student.session }}
+                    <input type="text" class="container" name="semester" id="id_semester" required maxlength="50" value="{{ student.semester }}"/>  
                 </div>
-    <div class="col-4 mb-3">
-        <label for ='reason'><b>Why do you want to engage in the Work Study Programme of Anchor University?: </b></label><br>
-        <input type="text" class="form_control" name="reason" id="id_reason" required maxlength="10000" value="{{ student.reason }}"/> 
-    </div>
-    <div class="col-4 mb-3">
-    <h4>Section B<br>Parent's Information</h4>
-        Fill out the information for either parent. It's advisable to stick to one.
-    <li>
-        <label for ='pname'><b>Name: </b></label>
-        {{ student.pname }}
-    </div>
-    <div class="col-4 mb-3">
-        <label for ='occupation'><b>Occupation: </b></label>
-        {{ student.occupation }}
-    </div>
+                <div class="col-4 mb-3">
+                    <label for ='cgpa'><b>CGPA: </b></label>
+                    <input type="text" class="container" name="cgpa" id="id_cgpa" required maxlength="50" value="{{ student.cgpa }}"/>
+                </div>
+                <div class="col-12 mb-3">
+                    <h4 class="text-center">Why do you want to engage in the Work study Programme of Anchor University 
+                    </h4>
+                </div>
+                <div class="col-4 mb-3">
+                    <label for ='reason1'><b>Reason 1 </b></label><br>
+                    <input type="textarea" class="container" name="reason1" id="id_reason1" required maxlength="10000" value="{{ student.reason1 }}"/> 
+                </div>
+                <div class="col-4 mb-3">
+                    <label for ='reason2'><b>Reason 2 </b></label><br>
+                    <input type="textarea" class="container" name="reason2" id="id_reason2" maxlength="10000" value="{{ student.reason2 }}"/> 
+                </div>
+                <div class="col-4 mb-3">
+                    <label for ='reason3'><b>Reason 3 </b></label><br>
+                    <input type="textarea" class="container" name="reason3" id="id_reason3" maxlength="10000" value="{{ student.reason3 }}"/> 
+                </div>
+                <div class="col-12 mb-3">
+                    <h4 class="text-center text-white bg-info p-3">Guardian and Work Details</h4>
+                </div>
+                <div class="row g-3 align-items-center">
+                    <div class="col-4 mb-3">
+                        <label for ='psur_name'><b>Surname: </b></label>
+                        <input type="text" class="container" name="psur_name" id="id_psurname" required maxlength="150" value="{{ student.psur_name }}"/> 
+                    </div>
+                    <div class="col-4 mb-3">
+                        <label for ='pmid_name'><b>Middle Name: </b></label>
+                        <input type="text" class="container" name="pmid_name" id="id_pmidname" required maxlength="150" value="{{ student.pmid_name }}"/>  
+                    </div>
+                    <div class="col-4 mb-3">
+                        <label for ='pfirst_name'><b>First Name: </b></label>
+                        <input type="text" class="container" name="pfirst_name" id="id_pfirstname" required maxlength="150" value="{{ student.pfirst_name }}"/>  
+                    </div>
+                    <div class="col-4 mb-3">
+                        <label for ='occupation'><b>Occupation: </b></label>
+                        <input type="text" class="container" name="occupation" id="id_occupation" required maxlength="70" value="{{ student.occupation }}"/>  
+                    </div>
+                    <div class="col-4 mb-3">
+                        <label for ='pphone'><b>Phone Number: </b></label>
+                        <input type="text" class="container" name="pphone" id="id_pphone" required maxlength="20" value="{{ student.pphone }}"/>  
+                    </div>
+                    <div class="col-4 mb-3">
+                        <label for ='pemail'><b>Email Address: </b></label>
+                        <input type="email" class="container" name="pemail" id="id_pemail" required maxlength="250" value="{{ student.pemail }}"/>
+                    </div>
+                </div>
+                <div class="col-4 mb-5">
+                    <h6 class="">Will your parents approve of your participation in WSP?
+                    </h6>
+                </div>
+                <div class="col-8 mb-5">
+                    <div class="form-check">
+                       <div class="form-check form-check-inline">
+                        <input type="text" class="container" name="parent_approval" id="id_parent_approval" required maxlength="50" value="{{ student.parent_approval }}"/> 
+                        </div>
+                    </div>
+                </div>
+                <div class="col-4 mb-3">
+                    <h6 class="">Have you had any previous work experience before now?
+                    </h6>
+                </div>
+                <div class="col-8 mb-3">
+                    <div class="form-check">
+                       <div class="form-check form-check-inline">
+                        <input type="text" class="container" name="experience" id="id_experience" required maxlength="50" value="{{ student.experience }}"/> 
+                    </div>
+                </div>
+                <input type="text" class="container" name="expdet" id="id_expdet" maxlength="10000" value="{{ student.expdet }}"/> 
+            </div>
+            <div class="col-4 mb-3">
+                <h6 class="">In which area(s) of activity of the University do you want to be engaged 
+                </h6>
+            </div>
+            <div class="col-8 mb-3">
+                <div class="form-check form-check-inline">
+                        {{ student.library }} Library<br> 
+                        {{ student.cafetaria }} Cafetaria<br> 
+                        {{ student.supermarket }} Supermarket<br>
+                        {{ student.ict_unit }} ICT Unit<br>
+                        {{ student.water_works }} Water Works<br>
+                        Others: <input type="text" class="container" name="others" id="id_others" maxlength="100" value="{{ student.others }}"/> 
+                </div>         
+                <input type="text" class="container" name="preferred" id="id_preferred" maxlength="50" value="{{ student.preferred }}"/> 
+            </div>
+            <div class="col-4 mb-5">
+                <h6>How many hours per week are you available to work?</h6>
+            </div>
+                <div class="col-8 mb-5">
+                    <input type="number" class="container" name="preferred" id="id_preferred" required maxlength="20" value="{{ student.hrs }}"/> 
+                </div>
+                <div class="col-12 mb-5">
+                    <h6>DECLARATION:</h6>
+                    <label for ='declaration' class="form_control">I </label>
+                    {{ student.declaration }} hereby declare that the information supplied above is correct and if at any time any of them is found to be untrue, I shall forfeit  the opportunity to participate in the Work Study Programme of the University.  I also declare that if I damage any equipment in my place of assignment I shall reimburse the University for the full recovery price of the item.
+                </div>
         <div class="col-4 mb-3">
-        <label for ='pphone'><b>Phone Number: </b></label>
-        {{ student.pphone }}
-    </div>
-        <div class="col-4 mb-3">
-        <label for ='pemail'><b>Email Address: </b></label>
-        {{ student.pemail }}
-    </div>
-        <div class="col-4 mb-3">
-        <label for ='approval'><b>Will your parents approve of your participation in WSP?: </b></label>
-        {{ student.approval }}
-    </li>       
-    <li>
-        <h4>Section C<br></h4>
-        <label for ='activity'><b>In which area(s) of activity of the University do you want to be engaged?: </b></label><br>
-        {{ student.library }} Library<br> 
-        {{ student.cafetaria }} Cafetaria<br> 
-        {{ student.supermarket }} Supermarket<br>
-        {{ student.ict_unit }} ICT Unit<br>
-        {{ student.water_works }} Water Works<br>
-        Others: {{ student.others }}
-    </li>         
-    <li>
-        <label for ='preferred'><b>If you chose more than one in the above question, please state your most preferred option: </b></label>
-        {{ student.preferred }}
-    </div>
-        <div class="col-4 mb-3">
-        <label for ='experience'><b>Have you had any work experience before now?: </b></label> 
-        {{ student.experience }}
-    </li> 
-    <li>
-        <label for ='expdet'><b>If Yes, please give some details: </b></label><br>
-        {{ student.expdet }}
-    </div>
-        <div class="col-4 mb-3">
-        <label for ='hrs'><b>How many hours per week are you available to work? </b></label>
-        {{ student.hrs }}
-    </div>
-        <div class="col-4 mb-3">
-        <label for ='declaration'><b>Declaration : I </b></label>
-        {{ student.declaration }} hereby declare that the information supplied above is correct and if at any time any of them is found to be untrue, I shall forfeit  the opportunity to participate in the Work Study Programme of the University.  I also declare that if I damage any equipment in my place of assignment I shall reimburse the University for the full recovery price of the item.
-    </div>
-        <div class="col-4 mb-3">
-        <label for ='namesign'><b>Applicant's full name and signature: </b></label>
-        {{ student.namesign }}<br>
-        Please upload digital signature: {{ student.sign }}
-    </li> 
-    <li>
-        <label for ='hodrec'><b>HOD's Recommendation: </b></label><br>
-        <input type="textarea" class="form_control" name="hodrec" id="id_hodrec" required maxlength="10000" value="{{ form.hodrec }}"/><br>
-        <label for ='hodname'><b>HOD's Full Name: </b></label>
-        <input type="text" class="form_control" name="hodname" id="id_hodname" required maxlength="150" value="{{ form.hodname }}"/><br>
-        Please upload HOD's digital signature:
-        <input type="file" class="form_control" name="hodsign" id="id_hodsign" value="{{ form.hodsign }}"/>
-    </div>
-        <div class="col-4 mb-3">
-        <label for ='deanrec'><b>Dean's Recommendation: </b></label><br>
-        <input type="textarea" class="form_control" name="deanrec" id="id_deanrec" required maxlength="10000" value="{{ form.deanrec }}"/><br>
-        <label for ='deanrec'><b>Dean's Full Name: </b></label>
-        <input type="text" class="form_control" name="deanname" id="id_deanname" required maxlength="150" value="{{ form.deanname }}"/><br>
-        Please upload Dean's digital signature: <input type="file" class="form_control" name="deansign" id="id_deansign" value="{{ form.deansign }}"/>
-    </div>
-        <div class="col-4 mb-3">
-        <label for ='dsacom'><b>Dean of Student Affairs' Comment: </b></label><br>
-        <input type="textarea" class="form_control" name="dsacom" id="id_dsacom" required maxlength="10000" value="{{ form.dsacom }}"/><br>
-        <label for ='hodrec'><b>Dean's Full Name: </b></label>
-        <input type="text" class="form_control" name="dsaname" id="id_dsaname" required maxlength="150" value="{{ form.dsaname }}"/><br>
-        Please upload Dean of Student Affairs' digital signature: <input type="file" class="form_control" name="dsasign" id="id_dsasign" value="{{ form.dsasign }}"/>
-    </li>
-    For official use only:<br>
-    Please upload evidence of parental consent to engage in WSP of AUL <input type="file" class="form_control" name="pconsent" id="id_pconsent" value="{{ form.pconsent }}"/><br>
-    </li>
-    <div class="form-group row">  
-        <label class="col-sm-1 col-form-label"></label>  
-        <div class="col-sm-4">  
-        
+            <label for ='namesign'><b>Applicant's full name and signature: </b></label>
+            <input type="text" class="container" name="namesign" id="id_namesign" maxlength="150" value="{{ student.namesign }}"/> <br>
+            Please upload digital signature: {{ student.sign }}
         </div>  
-                   <h4 class="text-center text-white bg-danger p-3">Official Approval Section (Student Do not Fill)</h4>
-                    </div>
-                    <div class="col-4">
-                        <h6 class="text-center">HoD's Recommendation
-                        </h6>
-                    </div>
-                    <div class="col-8">
-                        <textarea class="form-control" name='' id='' placeholder="Hod's Recommendation" rows="3"></textarea>
-                    </div>
-                    <div class="row g-3 align-items-center">
-                        <div class="col-4 mb-3">
-                            <input type="text" class="form-control" name='' id='' placeholder="HoD's Name">
-                        </div>
-                        <div class="col-4 mb-3">
-                            <input type="text" class="form-control" name='' id='' placeholder="Date">
-                        </div>
-                        <div class="col-4 mb-3">
-                            <input type="text" class="form-control" name='' id='' placeholder="Sign">
-                        </div>
-                    </div>
-                    <div class="col-4">
-                        <h6 class="text-center">Dean's Recommendation
-                        </h6>
-                    </div>
-                    <div class="col-8">
-                        <textarea class="form-control" name='' id='' placeholder="Dean's Recommendation" rows="3"></textarea>
-                    </div>
-                    <div class="row g-3 align-items-center">
-                        <div class="col-4 mb-3">
-                            <input type="text" class="form-control" name='' id='' placeholder="Dean's Name ">
-                        </div>
-                        <div class="col-4 mb-3">
-                            <input type="text" class="form-control" name='' id='' placeholder="Date">
-                        </div>
-                        <div class="col-4 mb-3">
-                            <input type="text" class="form-control" name='' id='' placeholder="Sign">
-                        </div>
-                    </div>
-                    <div class="col-4">
-                        <h6 class="text-center">Dean of Student's Affairs Comment
-                        </h6>
-                    </div>
-                    <div class="col-8">
-                        <textarea class="form-control" name='' id='' placeholder="Dean of Student's Affairs Comment" rows="3"></textarea>
-                    </div>
-                    <div class="row g-3 align-items-center">
-                        <div class="col-4 mb-3">
-                            <input type="text" class="form-control" name='' id='' placeholder="Surname">
-                        </div>
-                        <div class="col-4 mb-3">
-                            <input type="text" class="form-control" name='' id='' placeholder="Middlename">
-                        </div>
-                        <div class="col-4 mb-3">
-                            <input type="text" class="form-control" name='' id='' placeholder="Firstname">
-                        </div>
-                    </div>
-                    <div class="col-4">
-                        <h6 class="text-center">Unit Head of Applicant Comment
-                        </h6>
-                    </div>
-                    <div class="col-8">
-                        <textarea class="form-control" name='' id='' placeholder="Unit Head of Applicant" rows="3"></textarea>
-                    </div>
-                    <div class="row g-3 align-items-center">
-                        <div class="col-4 mb-3">
-                            <input type="text" class="form-control" name='' id='' placeholder="Unit Head's Name">
-                        </div>
-                        <div class="col-4 mb-3">
-                            <input type="text" class="form-control" name='' id='' placeholder="Date">
-                        </div>
-                        <div class="col-4 mb-3">
-                            <input type="text" class="form-control" name='' id='' placeholder="Sign">
-                        </div>
-                    </div>
-                    <div class="col-4">
-                        <h6 class="text-center">WSP Chairman's Comment
-                        </h6>
-                    </div>
-                    <div class="col-8">
-                        <textarea class="form-control" name='' id='' placeholder="WSP Chairman's" rows="3"></textarea>
-                    </div>
-                    <div class="row g-3 align-items-center">
-                        <div class="col-4 mb-3">
-                            <input type="text" class="form-control" name='' id='' placeholder="WSP Chairman's Name">
-                        </div>
-                        <div class="col-4 mb-3">
-                            <input type="text" class="form-control" name='' id='' placeholder="Date">
-                        </div>
-                        <div class="col-4 mb-3">
-                            <input type="text" class="form-control" name='' id='' placeholder="Sign">
-                        </div>
-                    </div>
-                    <div class="col-4 mb-3">
-                        <select class="form-select">
-                            <option selected>Unit Posted</option>
-                            <option value="21">Cafeteria</option>
-                            <option value="22">Supermarket</option>
-                            <option value="23">Library</option>
-                            <option value="24">ICT Unit</option>
-                            <option value="24">Water Works</option>
-                            <option value="24">General Affairs (Cleaning)</option>
-                        </select>
-                    </div>
-                    <div class="col-4 mb-3">
-                        <select class="form-select">
-                            <option selected>Recommendation Criteria</option>
-                            <option value="21">Recommended for Approval</option>
-                            <option value="22">Not Recommended</option>
-                        </select>
-                    </div>
-                    <div class="col-4 mb-3">
-                        <select class="form-select">
-                            <option selected>Vice Chancellor Approval</option>
-                            <option value="21">Approved</option>
-                            <option value="22">Disapproved</option>
-                        </select>
-                    </div>
-                </div>-->
-                <button type="submit" class="btn btn-success">Update</button>  
-            </form>
+        <div class="col-12 mb-3">
+        <h4 class="text-center text-white bg-danger p-3">Official Approval Section (Student should not Fill)</h4>
+        </div>
+        <!-- <div class="col-4">
+            <h6 class="text-center">HoD's Recommendation
+            </h6>
+        </div>
+        <div class="col-8">
+            {{ form.hodrec }}
+        </div>
+        <div class="row g-3 align-items-center">
+            <div class="col-4 mb-3">
+                {{ form.hodname }}
+            </div>
+            <div class="col-4 mb-3">
+                {{ form.hod_date }}
+            </div>
+            <div class="col-4 mb-3">
+                {{ form.hodsign }}
+            </div>
+        </div>
+        <div class="col-4">
+            <h6 class="text-center">Dean's Recommendation
+            </h6>
+        </div>
+        <div class="col-8">
+            {{ form.deanrec }}
+        </div>
+        <div class="row g-3 align-items-center">
+            <div class="col-4 mb-3">
+                {{ form.deanname }}
+            </div>
+            <div class="col-4 mb-3">
+                {{ form.dean_date }}
+            </div>
+            <div class="col-4 mb-3">
+                {{ form.deansign }}
+            </div>
+        </div>
+        <div class="col-4">
+            <h6 class="text-center">Dean of Student's Affairs Comment
+            </h6>
+        </div>
+        <div class="col-8">
+            {{ form.dsacom }}
+        </div>
+        <div class="row g-3 align-items-center">
+            <div class="col-4 mb-3">
+                {{ form.dsaname }}
+            </div>
+            <div class="col-4 mb-3">
+                {{ form.dsa_date }}
+            </div>
+            <div class="col-4 mb-3">
+                {{ form.dsasign }}
+            </div>
+        </div>
+        <div class="col-4">
+            <h6 class="text-center">Unit Head of Applicant Comment
+            </h6>
+        </div>
+        <div class="col-8">
+            {{ form.unithead_comm }}
+        </div>
+        <div class="row g-3 align-items-center">
+            <div class="col-4 mb-3">
+                {{ form.unithead_name }}
+            </div>
+            <div class="col-4 mb-3">
+                {{ form.unithead_date }}
+            </div>
+            <div class="col-4 mb-3">
+                {{ form.unithead_date }}
+            </div>
+        </div>
+        <div class="col-4">
+            <h6 class="text-center">WSP Chairman's Comment
+            </h6>
+        </div>
+        <div class="col-8">
+            {{ form.wspcomm }}
+        </div>
+        <div class="row g-3 align-items-center">
+            <div class="col-4 mb-3">
+                {{ form.wspname }}
+            </div>
+            <div class="col-4 mb-3">
+                {{ form.wsp_date }}
+            </div>
+            <div class="col-4 mb-3">
+                {{ form.wspsign }}
+            </div>
+        </div>
+        <div class="col-4 mb-3">
+            {{ form.unit_posted }}
+        </div>
+        <div class="col-4 mb-3">
+            <select class="form-select">
+                <option selected>Recommendation Criteria</option>
+                <option value="21">Recommended for Approval</option>
+                <option value="22">Not Recommended</option>
+            </select>
+        </div>
+        <div class="col-4 mb-3">
+            <select class="form-select">
+                <option selected>Vice Chancellor Approval</option>
+                <option value="21">Approved</option>
+                <option value="22">Disapproved</option>
+            </select>
+        </div> -->
+    </div>
+    <button type="submit" class="btn btn-success">Update</button>  
+</form>
         </section> 
     {% endblock %}
