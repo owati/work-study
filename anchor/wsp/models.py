@@ -14,7 +14,7 @@ class Student(models.Model):
     gender_choice = (('GENDER', 'Gender'),('MALE', 'Male'), ('FEMALE', 'Female'))
     gender = models.CharField(max_length=10, choices = gender_choice, default ='GENDER' ) 
     fac_choice = (('FACULTY', 'Faculty'), ('HUMANITIES', 'Faculty of Humanities'), ('SMS', 'Faculty of Social and Management Sciences'), ('SCIENCE', 'Faculty of Science and Science Education')) 
-    faculty = models.CharField(max_length=5, choices = fac_choice, default = 'FACULTY')  
+    faculty = models.CharField(max_length=10, choices = fac_choice, default = 'FACULTY')  
     department = models.CharField(max_length=300)
     session_choices = (('SESSION', 'Session'), ('21/22', '2021/2022'), ('22/23', '2022/2023'), ('23/24', '2023/2024'), ('24/25', '2024/2025'))
     session = models.CharField(max_length=50, choices = session_choices, default ='SESSION') 
@@ -32,7 +32,7 @@ class Student(models.Model):
     pphone = models.CharField(max_length=20)  
     pemail = models.EmailField()
     app_choice = (('YES', 'Yes'), ('NO', 'No'), ('DONT_KNOW', "Don't Know"))
-    parent_approval = models.CharField(max_length=5, choices = app_choice, default='DONT_KNOW')
+    parent_approval = models.CharField(max_length=30, choices = app_choice, default='DONT_KNOW')
     library = models.BooleanField(default = False, blank= True)
     cafetaria = models.BooleanField(default = False, blank= True)
     supermarket = models.BooleanField(default = False, blank= True)
@@ -72,11 +72,11 @@ class Student(models.Model):
     wsp_date = models.DateField()  
     wspsign = models.FileField(upload_to='sign/', blank= True)
     unit_choices = (('CAFETERIA', 'Cafeteria'), ('LIBRARY', 'Library'), ('SUPERMARKET', 'Supermarket'), ('ICT UNIT', 'ICT Unit'), ('WATER WORKS', 'Water Works'), ('GENERAL AFFAIRS', 'General Affairs(Cleaning)')) 
-    unit_posted = models.CharField(max_length=8, choices = unit_choices)
+    unit_posted = models.CharField(max_length=20, choices = unit_choices)
     recomend_critchoice = (('RECOMMENDED', 'Recommended for Approval'), ('NOT RECOMMENDED', 'Not Recommended'))
-    recomend_crit = models.CharField(max_length=4, choices = recomend_critchoice)
+    recomend_crit = models.CharField(max_length=20, choices = recomend_critchoice)
     vcapprove_choice = (('APPROVED', 'Approved'), ('NOT APPROVED', 'Not Approved'))
-    vcapprove = models.CharField(max_length=4, choices = vcapprove_choice)
+    vcapprove = models.CharField(max_length=30, choices = vcapprove_choice)
     
     class Meta:
         db_table = "student"   

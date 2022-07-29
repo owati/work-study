@@ -7,6 +7,7 @@ from .models import Student
 def home(request):  
     if request.method == "POST":  
         form = StudentForm(request.POST)  
+        print(dict(form.errors)) # prints the error
         if form.is_valid():  
             try:  
                 form.save()  
