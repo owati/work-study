@@ -151,10 +151,11 @@
                 <h6>How many hours per week are you available to work?</h6>
             </div>
                 <div class="col-8 mb-5">
-                    <input type="number" class="container" name="preferred" id="id_preferred" required maxlength="20" value="{{ student.hrs }}"/> 
+                    <input type="number" class="container" name="hrs" id="id_preferred" required maxlength="20" value="{{ student.hrs }}"/> 
                 </div>
                 <div class="col-12 mb-5">
                     <h6>DECLARATION:</h6>
+                    <input type="hidden" name="declaration" value="{{student.declaration}}"/>
                     <label for ='declaration' class="form_control">I </label>
                     {{ student.declaration }} hereby declare that the information supplied above is correct and if at any time any of them is found to be untrue, I shall forfeit  the opportunity to participate in the Work Study Programme of the University.  I also declare that if I damage any equipment in my place of assignment I shall reimburse the University for the full recovery price of the item.
                 </div>
@@ -260,18 +261,13 @@
             {{ form.unit_posted }}
         </div>
         <div class="col-4 mb-3">
-            <select class="form-select" name="recomend_crit"> <!--Added the name for the select input and the correct options values -->
-                <option selected>Recommendation Criteria</option>
-                <option value="RECOMMENDED">Recommended for Approval</option>
-                <option value="NOT RECOMMENDED">Not Recommended</option>
-            </select>
+            <h5>    Recommendation Criteria</h5>
+
+            {{form.recomend_crit}}
         </div>
         <div class="col-4 mb-3">
-            <select class="form-select" name="vcapprove"> <!-- Added the name for the select input and the correct options vaues-->
-                <option selected>Vice Chancellor Approval</option>
-                <option value="APPROVED">Approved</option>
-                <option value="NOT APPROVED">Disapproved</option>
-            </select>
+            <h5>Vice chancellor Approval</h5>
+            {{form.vcapprove}}
         </div>
     </div>
     <button type="submit" class="btn btn-success">Update</button>  

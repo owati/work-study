@@ -28,7 +28,7 @@ def edit(request, id):
 def update(request, id):  
 
     
-    #NOTE: This solution only works well for the recommendation updates..
+    #NOTE: I also made some changes to the edit html
     
     student = Student.objects.get(id=id) # fetches the student with that id
 
@@ -42,15 +42,17 @@ def update(request, id):
 
     if request.method == 'POST':
         form = RecommendationForm(request.POST, instance=recommendation) # popultaes the form with the new data
+        form2 = StudentForm(request.POST, instance=student)
+
+        # print(dict(form2.errors), request.POST)
         
         #print(dict(form.errors), request.POST)
-        if form.is_valid():
-            recommendation_data = form.save(commit=False) # creates instance of new recommendation but does not save to the data base because we want to attach the student model to it.
-
-            if not recommendation: # if the student did not have recommendation prior to this
-                recommendation_data.student = student
-
+        if form.is_valid() and form2.is_valid():
+            recommendation_data = form.save(commit=False) # creates instance of new recommendation but does not save to the data base because we want to attach the student model to it
+            recommendation_data.student = student # assign the student model to it
             recommendation_data.save()  
+
+            form2.save()
             return redirect("/show") 
 
     return render(request, 'edit.html', {'student': student, 'form' : form}) #'form1': form1 

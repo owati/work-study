@@ -46,7 +46,7 @@ class Student(models.Model):
     exp_choice = [(YES, 'Yes'), (NO, 'No'), ('DONT_KNOW', "I don't think so")]
     experience = models.CharField(max_length=50, choices = exp_choice , default='DONT_KNOW')  
     expdet = models.TextField(blank= True) 
-    hrs = models.IntegerField()  
+    hrs = models.IntegerField(blank=True)  
     declaration = models.CharField(max_length=150) 
     namesign = models.CharField(max_length=150)  
     sign = models.FileField(upload_to='sign/',blank= True)
